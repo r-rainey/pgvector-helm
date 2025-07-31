@@ -2,20 +2,21 @@
 replicaCount: 1
 
 image:
-  repository: pgvector/pgvector
-  tag: 0.8.0-pg14
+  repository: tensorchord/pgvecto-rs 
+  tag: pg14-v0.3.0 
   pullPolicy: IfNotPresent
 
 postgresql:
-  username: postgres
-  password: postgres
+  username: pguser 
+  password: pgpass
   database: postgres
   port: 5432
+  data_location: /bitnami/postgresql
 
 persistence:
   enabled: true
-  size: 64Gi
-  storageClassName: gp2
+  size: 16Gi
+  storageClassName: ssd-storage 
 
 service:
   type: ClusterIP
@@ -29,5 +30,3 @@ resources:
     cpu: 500m
     memory: 512Mi
 
-nodeSelector:
-  ic: pg
